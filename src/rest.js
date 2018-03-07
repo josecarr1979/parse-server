@@ -128,7 +128,7 @@ function update(config, auth, className, objectId, restObject, clientSDK) {
 // Disallowing access to the _Role collection except by master key
 function enforceRoleSecurity(method, className, auth) {
   if (className === '_Installation' && !auth.isMaster) {
-    if (method === 'delete' || method === 'find') {
+    if (method === 'delete' /*|| method === 'find'*/) {
       const error = `Clients aren't allowed to perform the ${method} operation on the installation collection.`
       throw new Parse.Error(Parse.Error.OPERATION_FORBIDDEN, error);
     }
